@@ -19,11 +19,12 @@
 		'$_POST[incorrecta2]','$_POST[incorrecta3]', '$_POST[tema]', '$_POST[dificultad]')";
 
 		if(!mysqli_query($mysqli,$sql)){
-				die('Error: ' .mysqli_error($sql));
-				echo "CUIDADO!";
+			echo "CUIDADO!";
+			die('Error: ' .mysqli_error($sql));
+				
 		}	
 		echo " Tu pregunta ha sido añadida correctamente.";
-		echo "<a href="ShowQuestions.php"> Ver preguntas </a>";
+		echo "<a href='ShowQuestions.php'> Visualizar preguntas </a>";
 		
 		
 		mysqli_close($mysqli);
