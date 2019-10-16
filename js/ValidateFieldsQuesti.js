@@ -47,8 +47,8 @@ $("#forma").on('submit', function(evt){
 
     var correo=$("#correo").val();
 
-    var profe=/^[a-z]+(.[a-z]+)?@ehu.(eus|es)$/;
-    var alumnos=/^[a-z]+[0-9]{3}@ikasle.ehu.(eus|es)$/;
+    var profe=/^[a-z]+(\.[a-z]+)?@ehu\.(eus|es)$/;
+    var alumnos=/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/;
     if(!alumnos.test(correo) && !profe.test(correo)){
 		$("#errores").html("El email introducido <strong> no </strong> es válido");
         

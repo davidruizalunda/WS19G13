@@ -9,7 +9,8 @@
   <section class="main" id="s1">
     <div>
 	<?php
-		$mysqli=mysqli_connect($server,$user, $pass, $basededatos);
+		$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
+		//$mysqli=new PDO('mysql:host=localhost;dbname=id11248270_sw13',$user, $pass);
 		if(!$mysqli){
 				die("Fallo al establecer conexión" .mysqli_connect_error());
 		}
