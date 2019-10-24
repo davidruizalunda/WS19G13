@@ -13,7 +13,7 @@
       <h3><a href="mailto:druiz046@ikasle.ehu.eus" title="druiz046@ikasle.ehu.eus">David Ruiz Alunda</a> - Software</h3>
       <img src="https://pbs.twimg.com/profile_images/1043773987795427328/dF94CCEu.jpg" width=100>
       
-      <h3><a href="mailto:ibereciartua003@ikasle.ehu.eus" title="ibereciartua003@ikasle.ehu.eus">Iñigo Bereciartua Rocha</a> - Software</h3>
+      <h3><a href="mailto:ibereciartua003@ikasle.ehu.eus" title="ibereciartua003@ikasle.ehu.eus">I&ntilde;igo Bereciartua Rocha</a> - Software</h3>
       <img src="https://egela.ehu.eus/pluginfile.php/304035/user/icon/ehu/f1?rev=8116055" width=100 >
 
     </div>
@@ -21,4 +21,3 @@
   <?php include '../html/Footer.html' ?>
 </body>
 </html>
-

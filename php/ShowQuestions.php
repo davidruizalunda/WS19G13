@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <?php include '../html/Head.html'?>
@@ -8,8 +8,7 @@
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
     <div>
-      Código PHP para mostrar una tabla con las preguntas de la BD.<br>
-      La tabla no incluye las imágenes
+      
 	  <?php
 	  $mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 	  if(!$mysqli){

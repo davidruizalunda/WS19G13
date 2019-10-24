@@ -3,7 +3,7 @@
 <head>
   <?php include '../html/Head.html'?>
   <script src="../js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="../js/ValidateFieldsQuesti.js"></script>
+  
   <style>
   #errores{
   color: red;
@@ -21,8 +21,10 @@
       
     <br>
 	<br>
-
-	<form id="forma" method="POST" action="AddQuestion.php">
+	<?php
+		$email=$_GET['email'];
+		echo"<form id='forma' method='POST' action='AddQuestion.php?email=$email'>";
+	?>	
 		
         <h3> Formulario Insertar Preguntas </h3>
 		<br>
@@ -56,7 +58,10 @@
 		<br>
 		<br>
         <p> Tu correo: </p>
-		<input type="text" id="correo" name="correo" class="field" size="49" placeholder="Direccion de correo del autor de la pregunta"> 
+		<?php 
+$email=$_GET['email'];
+echo"<input type='text' id='correo' name='correo' class='field' size='49' value='$email' placeholder='Direcci&oacute;n de correo del autor de la pregunta'>" ;
+?> 
         <br>
 
 
