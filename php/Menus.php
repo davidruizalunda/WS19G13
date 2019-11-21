@@ -11,7 +11,7 @@
   	echo"<span class='right'><a href='SignUp.php'>Registro</a></span>";
 	echo "&nbsp";
 	echo "&nbsp";
-	echo"<span class='right'><a href='Login.php'>Login</a></span>";		
+	echo"<span class='right'><a href='LogIn.php'>Login</a></span>";		
 	}
 	?>
 
@@ -24,14 +24,13 @@
 	if (isset($_GET['email'])){
 		$email=$_GET['email'];
 		echo"<span><a href='Layout.php?email=$email'>Inicio</a></span>";
-  		echo"<span><a href='QuestionForm.php?email=$email'> Insertar Pregunta</a></span>";
-		echo"<span><a href='ShowQuestions.php?email=$email'> Visualizar Pregunta</a></span>";
 		echo"<span><a href='Credits.php?email=$email'>Cr&eacute;ditos</a></span>";
+		echo"<span><a href='HandlingQuizesAjax.php?email=$email'>Gestionar Preguntas</a></span>";
+		echo"<span><a href='GetQuestion.php?email=$email'>Obtener preguntas</a></span>";
 	}else{
 		echo"<span><a href='Layout.php'>Inicio</a></span>";  		
 		echo"<span><a href='Credits.php'>Cr&eacute;ditos</a></span>";
 	}
 	?>
-
- 	
+	
 </nav>

@@ -50,7 +50,7 @@ $("#forma").on('submit', function(evt){
     var profe=/^[a-z]+(\.[a-z]+)?@ehu\.(eus|es)$/;
     var alumnos=/^[a-z]+[0-9]{3}@ikasle\.ehu\.(eus|es)$/;
     if(!alumnos.test(correo) && !profe.test(correo)){
-		$("#errores").html("El email introducido <strong> no </strong> es válido");
+		$("#errores").html("El email introducido <strong> no </strong> es vï¿½lido");
         
         return false;
     }

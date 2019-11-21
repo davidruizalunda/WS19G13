@@ -10,8 +10,12 @@
     <div>
       
 	  <?php
-	  $mysqli=mysqli_connect($server,$user,$pass,$basededatos);
-	  if(!$mysqli){
+	  	//$server="localhost";
+		//$user="id11248270_bereruiz";
+		//$pass="ibiricu";
+		//$basededatos="id11248270_sw13";
+	  	$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
+	  	if(!$mysqli){
 				die("Fallo al establecer conexiÃ³n" .mysqli_connect_error());
 		}
 		
@@ -28,7 +32,7 @@
 		echo"</tr>";
 		while($columna=mysqli_fetch_array($resultado)){
 		echo "<tr>";
-		//echo "<td>".$columna['email']."</td><td>".$columna['enunciado']."</td><td>".$columna['correcta']."</td>";
+		
 		echo "<td>". "<a href=mailto:". $columna['email'].">". $columna['email']. "</a>"."</td><td>".$columna['enunciado']."</td><td>".$columna['correcta']."</td>";	
 		
 		echo "</tr>";

@@ -59,9 +59,9 @@
 		<br>
         <p> Tu correo: </p>
 		<?php 
-$email=$_GET['email'];
-echo"<input type='text' id='correo' name='correo' class='field' size='49' value='$email' placeholder='Direcci&oacute;n de correo del autor de la pregunta'>" ;
-?> 
+            $email=$_GET['email'];
+            echo"<input type='text' id='correo' name='correo' class='field' size='49' value='$email' placeholder='Direcci&oacute;n de correo del autor de la pregunta'>" ;
+        ?> 
         <br>
 
 

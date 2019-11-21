@@ -19,7 +19,7 @@
 			<br>
 
 			<div>
-			Contrasenia: <input type="password" name="pass">
+			Contrasen&ntilde;a: <input type="password" name="pass">
 			</div>
 			<br>
 			
@@ -31,7 +31,10 @@
 	
 		<?php
 			if (isset($_POST['email'])){	
-				
+				//$server="localhost";
+				//$user="id11248270_bereruiz";
+				//$pass="ibiricu";
+				//$basededatos="id11248270_sw13";
 				$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 				
 				if(!$mysqli){
@@ -50,8 +53,7 @@
 					
 					if($cont==1){
 						echo("<script> alert ('BIENVENIDO AL SISTEMA')</script>");
-						
-						header("Location: Layout.php?email=$email");					} 
+						echo "<a href='Layout.php?email=$email'>Login correcto. ENTRAR</a>";					} 
 					else {
 						echo("Par&aacute;metros de login incorrectos ");
 					} 
