@@ -6,6 +6,15 @@
 <body>
   <?php include '../php/Menus.php' ?>
   <section class="main" id="s1">
+  <?php 
+        if(isset($_SESSION['tipo'])){
+          if(strcmp($_SESSION['tipo'],"admin")===0){
+            echo"<script> alert ('No tienes permisos para acceder a esta pagina.')";
+            echo "<script language=Javascript> location.href=\"Layout.php\"; </script>";
+          } 
+        }
+        ?>
+
     <div>
 	
       <h1>Autores</h1>   
@@ -54,6 +63,7 @@
 
       </script>
     </div>
+   
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

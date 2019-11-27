@@ -22,8 +22,8 @@
     <br>
 	<br>
 	<?php
-		$email=$_GET['email'];
-		echo"<form id='forma' method='POST' action='AddQuestion.php?email=$email'>";
+		$email=$_SESSION['email'];
+		echo"<form id='forma' method='POST' action='AddQuestion.php'>";
 	?>	
 		
         <h3> Formulario Insertar Preguntas </h3>

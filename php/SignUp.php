@@ -3,11 +3,9 @@
 <head>
   <?php include '../html/Head.html'?>
   <?php include 'DbConfig.php'?>
-  <script src="../js/jquery.min.js"></script>
-  <script src="../js/esVip.js"></script>
+<script src="../js/esVip.js"></script>
   <script src="../js/checkPass.js"></script>
-  
-  
+  <script src="jquery.min.js"></script>
   
   
 </head>
@@ -18,38 +16,38 @@
 
 
 
-     <form action="SignUp.php" method="post" enctype="multipart/form-data">
-		<h1>Register</h1>        
-			Tipo: <select name="tipo" >
-				<option default value="Alumno">Alumno</option>
-				<option value="Profesor">Profesor</option>
-				</select>
-			<br>
-			Email: <input type="text" name="email" id="email" required>
-			<div id="vipEmail">				
-			</div>
-			<div id='loaderemail' style='display: none;'>
- 			<img src='../images/loading.gif' width='50px' height='50px'>
-			</div>
+<form action="SignUp.php" method="post" enctype="multipart/form-data">
+        <h1>Register</h1>
+            Tipo: <select name="tipo" >
+                <option default value="Alumno">Alumno</option>
+                <option value="Profesor">Profesor</option>
+                </select>
+            <br>
+            Email: <input type="text" name="email" id="email" required>
+            <div id="vipEmail">
+            </div>
+            <div id='loaderemail' style='display: none;'>
+             <img src='../images/loading.gif' width='50px' height='50px'>
+            </div>
 
-			<br>
-			Nombre y Apellido: <input type="text" name="name" pattern="^.+ .+$" required>
-			<br>		
-			Contrase&ntilde;a: <input type="password" id="pass" name="pass" pattern=".+"/ required>  
-			<div id="passCheck">			
-			</div>
-			<div id='loaderpass' style='display: none;'>
- 			<img src='../images/loading.gif' width='50px' height='50px'>
-			</div>
+            <br>
+            Nombre y Apellido: <input type="text" name="name" pattern="^.+ .+$" required>
+            <br>
+            Contrase&ntilde;a: <input type="password" id="pass" name="pass" pattern=".+"/ required>
+            <div id="passCheck">
+            </div>
+            <div id='loaderpass' style='display: none;'>
+             <img src='../images/loading.gif' width='50px' height='50px'>
+            </div>
 
 
-			<br>
-			Repetir Contrase&ntilde;a: <input type="password" name="pass2" pattern=".+"/ required> 
-         		<br>
-			<input id="file-input" name="file-input" type="file"/>
-           		<br>          			
-			<input type="submit" id="boton" value="Enviar" name="boton" disabled >						
-	</form>
+            <br>
+            Repetir Contrase&ntilde;a: <input type="password" name="pass2" pattern=".+"/ required> 
+                 <br>
+            <input id="file-input" name="file-input" type="file"/>
+                   <br>
+            <input type="submit" id="boton" value="Enviar" name="boton" disabled >
+    </form>
 	
 	
 	
@@ -67,16 +65,16 @@
 				$rpass= $_POST['pass2'];
  				$tipo=$_POST['tipo'];
                	$email=$_POST['email'];
-				$name=$_POST['name'];
-				$esvip;	
-				
+                $name=$_POST['name'];
+
 				if(($tipo=="Alumno")&&(preg_match($emailAlumno,$_POST['email'])==0)){
 					echo "El correo no es valido ";
 				}
 			
 				else if(($tipo=="Profesor")&&(preg_match($emailProfe,$_POST['email'])==0)){
 					echo "El correo no es valido ";
-				}				
+				}
+
 				
 				else if(strlen($pass)<6){
 					echo"La contrase&ntilde;a debe contener al menos 6 caracteres";
@@ -92,11 +90,11 @@
 					//$user="id11248270_bereruiz";
 					//$pass="ibiricu";
 					//$basededatos="id11248270_sw13";
-
 					$server="localhost";
-    				$user="root";
-    				$pass="";
+    					$user="root";
+    					$pass="";
    					$basededatos="quiz";
+
 					
 					$nombreFoto=$_FILES['file-input']['name'];
 					$rutaImg="../images/".$nombreFoto;
@@ -108,37 +106,38 @@
 						die("Fallo al establecer conexion" .mysqli_connect_error());
 					}
 
-				 	mysqli_query( $mysqli,"insert into usuarios (nombre, contrase�a, email, tipo,rutaImg) values ('$name', '$rpass','$email','$tipo','$rutaImg')");
+				 	$crypted=crypt($rpass,"ibiricueselmejor");
+                     mysqli_query( $mysqli,"insert into usuarios (nombre, pass, email, tipo,rutaImg,estado) values ('$name', '$crypted','$email','$tipo','$rutaImg','activada')");
+                            mysqli_close( $mysqli);
                 			mysqli_close( $mysqli);
 					
 					echo '<script language="javascript">
 							alert("Usuario registrado correctamente");
 							window.location.href="Layout.php";
-						  </script>';				
+						  </script>';
 				}
 			}
-			
-    ?>	
+
+		?>
+    
     </div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script>
-
-	
-	
-
-	$(document).ready(function() {
-  	 $("#email").on("blur", function(){
-		   esVip();
-	    });
-	});
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E</script>
+    <script>
 
 
-	$(document).ready(function() {
-  	 $("#pass").on("blur", function(){
-		   checkPass();
-	    });
-	});
-	</script>
+    $(document).ready(function() {
+       $("#email").on("blur", function(){
+           esVip();
+        });
+    });
+    $(document).ready(function() {
+       $("#pass").on("blur", function(){
+           checkPass();
+        });
+    });
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js%22%3E</script>
+    <script>
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

@@ -1,18 +1,22 @@
+<?php
+session_start();
+?>
 <div id='page-wrap'>
 <header class='main' id='h1'>
 	
 	<?php
-	if (isset($_GET['email'])){
-	echo"<span class='right'><a href='Layout.php'>Logout</a></span>";
-	echo "&nbsp";
-	echo "&nbsp";
-        echo $_GET['email'];
-	}else{
-  	echo"<span class='right'><a href='SignUp.php'>Registro</a></span>";
-	echo "&nbsp";
-	echo "&nbsp";
-	echo"<span class='right'><a href='LogIn.php'>Login</a></span>";		
-	}
+
+		if (isset($_SESSION['email'])){
+			echo"<span class='right'><a href='Logout.php'>Logout</a></span>";
+			echo "&nbsp";
+			echo "&nbsp";
+			echo $_SESSION['email'];
+		}else{
+			echo"<span class='right'><a href='SignUp.php'>Registro</a></span>";
+			echo "&nbsp";
+			echo "&nbsp";
+			echo"<span class='right'><a href='LogIn.php'>Login</a></span>";		
+		}
 	?>
 
 </header>
@@ -21,12 +25,18 @@
 
 
   	<?php
-	if (isset($_GET['email'])){
-		$email=$_GET['email'];
-		echo"<span><a href='Layout.php?email=$email'>Inicio</a></span>";
-		echo"<span><a href='Credits.php?email=$email'>Cr&eacute;ditos</a></span>";
-		echo"<span><a href='HandlingQuizesAjax.php?email=$email'>Gestionar Preguntas</a></span>";
-		echo"<span><a href='GetQuestion.php?email=$email'>Obtener preguntas</a></span>";
+	if (isset($_SESSION['email'])){
+		if(strcmp($_SESSION['tipo'],"admin")===0){
+			
+			echo"<span><a href='HandlingAccounts.php'>Gestionar usuarios</a></span>";
+			
+			
+		}else{
+			echo"<span><a href='Layout.php'>Inicio</a></span>";
+			echo"<span><a href='Credits.php'>Cr&eacute;ditos</a></span>";
+			echo"<span><a href='HandlingQuizesAjax.php'>Gestionar Preguntas</a></span>";
+			
+		}	
 	}else{
 		echo"<span><a href='Layout.php'>Inicio</a></span>";  		
 		echo"<span><a href='Credits.php'>Cr&eacute;ditos</a></span>";

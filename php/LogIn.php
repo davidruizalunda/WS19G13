@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,27 +36,62 @@
 				//$user="id11248270_bereruiz";
 				//$pass="ibiricu";
 				//$basededatos="id11248270_sw13";
+
+				$server="localhost";
+   				$user="root";
+    			$pass="";
+    			$basededatos="quiz";
+
 				$mysqli=mysqli_connect($server,$user,$pass,$basededatos);
 				
 				if(!$mysqli){
-					echo"HOLAAAA";
-						die("Fallo al establecer conexion" .mysqli_connect_error());
+					die("Fallo al establecer conexion" .mysqli_connect_error());
 				}
 
 					$email = $_POST['email'];
 					$pass = $_POST['pass'];										
 					
-					$user = mysqli_query( $mysqli,"select nombre from usuarios where email ='$email' and contraseña='$pass'");
+					$cripted=crypt($pass,"ibiricueselmejor");
+                    $user = mysqli_query( $mysqli,"SELECT nombre FROM usuarios WHERE email ='$email' AND pass='$cripted' AND estado='activada' ");				
 					$cont=  mysqli_num_rows($user); 
 					$columna= mysqli_fetch_array($user);
 					$name=$columna['nombre'];
 					mysqli_close( $mysqli);
+									
+					
 					
 					if($cont==1){
-						echo("<script> alert ('BIENVENIDO AL SISTEMA')</script>");
-						echo "<a href='Layout.php?email=$email'>Login correcto. ENTRAR</a>";					} 
+						/*$result= mysqli_query($conexion,"SELECT estado FROM usuarios WHERE email='$email'");
+						$row=mysqli_fetch_array($result);
+						$estado=$row['estado'];
+						echo"<script >alert($estado);</script>";
+						*/
+						/*If ($estado == ""){*/
+							
+							$_SESSION['email']=$email;
+							
+
+							if($_SESSION['email']=="admin@ehu.es"){
+								$_SESSION['tipo']="admin";
+								
+							}else{
+
+								$_SESSION['tipo']="user";
+	
+							}
+				
+							echo("<script> alert ('BIENVENIDO AL SISTEMA')</script>");
+							echo("<script> location.replace('Layout.php'); </script>");
+						
+							/*
+						}else{
+							echo("<script> alert ('USUARIO BLOQUEADO')</script>");
+							session_destroy();		
+						}*/
+					} 
 					else {
-						echo("Par&aacute;metros de login incorrectos ");
+						
+						echo("Par&aacute;metros de login incorrectos o el usuario ha sido bloqueado. ");
 					} 
 					
 				
@@ -63,6 +99,7 @@
 		?>
     
     </div>
+
   </section>
   <?php include '../html/Footer.html' ?>
 </body>

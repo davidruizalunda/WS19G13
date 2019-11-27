@@ -1,3 +1,6 @@
+<?
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,13 +20,18 @@
   
   
   <section class="main" id="s1">
+  <?php 
+        if(!isset($_SESSION['tipo']) || strcmp($_SESSION['tipo'],"user")!==0){
+          echo("No tienes permisos para acceder a esta pagina.");
+        }else{
+        ?>
     <div>
 
       
     <br>
 	<br>
 	<?php
-		$email=$_GET['email'];
+		$email=$_SESSION['email'];
 		echo"<form id='form' method='POST'>";
 	?>	
 		
@@ -60,7 +68,7 @@
 		<br>
         <p> Tu correo: </p>
 		<?php 
-            $email=$_GET['email'];
+            $email=$_SESSION['email'];
             echo"<input type='text' id='correo' name='correo' class='field' size='49' value='$email' placeholder='Direcci&oacute;n de correo del autor de la pregunta' readonly>" ;
         ?> 
         <br>
@@ -78,6 +86,9 @@
     <div id="questionsContainer" name="questionsContainer">
 
     </div>
+    <?php
+        }
+    ?>
   </section>
 
   <?php include '../html/Footer.html' ?>
